@@ -63,7 +63,8 @@ kodi-inputstream-mpd
 ADD kodi_config_files.tar.gz /
 
 # visualization.goom, visualization.projectm and visualization.spectrum are installed to the wrong location
-RUN mv /usr/lib/x86_64-linux-gnu/addons/* /usr/lib/kodi/addons/
+#RUN mv /usr/lib/x86_64-linux-gnu/addons/* /usr/lib/kodi/addons
+# TODO: fix: [ mv: target '/usr/lib/kodi/addons/' is not a directory ]
 
 RUN ln /usr/bin/nodejs /usr/bin/node
 
