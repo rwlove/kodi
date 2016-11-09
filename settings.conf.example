@@ -1,1 +1,5 @@
-USER_NAME=kodi
+USER=myuser
+PASSWORD=mypassword
+USER_UID=1000
+USER_GID=1000
+USER_NAME=kodiuser

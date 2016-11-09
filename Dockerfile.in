@@ -51,13 +51,14 @@ libcurl4-openssl-dev \
 x11-xserver-utils \
 coreutils \
 nodejs \
-npm
+npm \
+kodi-inputstream-mpd
 
 #####
 # Install and configure 'kodi'
 #####
 
-#may need to add screensaver stop/start files to /usr/local/bin
+##may need to add screensaver stop/start files to /usr/local/bin
 
 ADD kodi_config_files.tar.gz /
 
@@ -71,9 +72,17 @@ EXPOSE 9090
 EXPOSE 1900
 EXPOSE 9777
 
-COPY plugin.video.youtube-5.2.24-BETA.zip /plugin.video.youtube-5.2.24-BETA.zip
+RUN groupadd -g {{USER_GID}} {{USER}} && \
+useradd {{USER}} -u {{USER_UID}} -g {{USER}} && \
+echo "{{USER}}:{{PASSWORD}}" | chpasswd
 
-RUN apt-get install kodi-inputstream-mpd
+#RUN useradd -G sound {{USER}}
+
+RUN mkdir -p /home/{{USER}}/.config/pulse /home/{{USER}}/.pulse /home/{{USER}}/.kodi/temp
+RUN chown {{USER}}:{{USER}} -R /home/{{USER}}
+
+#COPY plugin.video.youtube-5.3.1.zip /plugin.video.youtube-5.3.1.zip
+#RUN chown {{USER}.{{USER}} /plugin.video.youtube-5.3.1.zip
 
 CMD ["/usr/local/bin/launchKodi.sh"]
 
@@ -83,3 +92,5 @@ CMD ["/usr/local/bin/launchKodi.sh"]
 
 RUN apt-get -y clean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+USER {{USER}}
