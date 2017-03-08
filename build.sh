@@ -7,6 +7,6 @@
 cat Dockerfile.in | sed "s/{{USER}}/${USER}/g; s/{{PASSWORD}}/${PASSWORD}/g; s/{{USER_UID}}/${USER_UID}/g; s/{{USER_GID}}/${USER_GID}/g" > Dockerfile
 
 #docker build -t services/kodi .
-docker build -t services/kodi --no-cache .
+docker build $* -t services/kodi .
 
 rm kodi_config_files.tar.gz Dockerfile
