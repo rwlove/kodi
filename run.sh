@@ -41,7 +41,8 @@ docker run \
        -p 9777:9777 \
        -h kodi \
        --restart=always \
-       services/kodi:17.0-RC3
-#       services/kodi:latest
+       services/kodi:latest
+       #       services/kodi:17.0-RC3
+#
 #       services/kodi:17.0-git20161028.1906-beta5-0vivid /bin/bash
 #services/kodi:17.0-BETA3-20161004

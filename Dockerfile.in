@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:16.10
 
 #####
 # Configure Environment Variables
@@ -52,7 +52,10 @@ x11-xserver-utils \
 coreutils \
 nodejs \
 npm \
-kodi-inputstream-mpd
+kodi-inputstream-mpd \
+ethtool \
+iputils-tracepath \
+iputils-ping
 
 #####
 # Install and configure 'kodi'
