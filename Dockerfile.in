@@ -1,11 +1,11 @@
-FROM ubuntu:16.10
+FROM ubuntu:17.04
 
 #####
 # Configure Environment Variables
 #####
 
 # # Ensure UTF-8 lang and locale
-RUN locale-gen en_US.UTF-8
+ENV LANGUAGE   en_US:UTF-8
 ENV LANG       en_US.UTF-8
 ENV LC_ALL     en_US.UTF-8
 ENV TZ         America/Los_Angeles
@@ -23,16 +23,13 @@ RUN  echo 'Acquire::http { Proxy "http://apt-cache-proxy:3142"; };' >> /etc/apt/
 # Update and Install Packages
 #####
 
-RUN apt-get -y update && \
-apt-get -y dist-upgrade
+RUN apt-get clean && apt-get -y update && apt-get install -y locales && dpkg-reconfigure locales && locale-gen en_US.UTF-8 && apt-get install -y software-properties-common
 
-RUN apt-get install -y software-properties-common
-
-#add-apt-repository -y ppa:team-xbmc/ppa && \
+#add-apt-repository -y ppa:team-xbmc/unstable && \
+#add-apt-repository -y ppa:wsnipex/vaapi && \
 
 RUN add-apt-repository -y multiverse && \
-add-apt-repository -y ppa:team-xbmc/unstable && \
-add-apt-repository -y ppa:wsnipex/vaapi && \
+add-apt-repository -y ppa:team-xbmc/ppa && \
 add-apt-repository -y ppa:jlbarriere68/ppa && \
 apt-get -y update
 
@@ -43,7 +40,9 @@ pulseaudio \
 strace \
 kodi \
 kodi-pvr-mythtv \
-kodi-visualization* \
+kodi-visualization-projectm \
+kodi-visualization-shadertoy \
+kodi-visualization-spectrum \
 dbus-x11 \
 vainfo \
 x11-apps \
@@ -52,7 +51,7 @@ x11-xserver-utils \
 coreutils \
 nodejs \
 npm \
-kodi-inputstream-mpd \
+kodi-inputstream-adaptive \
 ethtool \
 iputils-tracepath \
 iputils-ping
