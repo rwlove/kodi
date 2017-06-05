@@ -84,9 +84,6 @@ echo "{{USER}}:{{PASSWORD}}" | chpasswd
 RUN mkdir -p /home/{{USER}}/.config/pulse /home/{{USER}}/.pulse /home/{{USER}}/.kodi/temp
 RUN chown {{USER}}:{{USER}} -R /home/{{USER}}
 
-#COPY plugin.video.youtube-5.3.1.zip /plugin.video.youtube-5.3.1.zip
-#RUN chown {{USER}.{{USER}} /plugin.video.youtube-5.3.1.zip
-
 CMD ["/usr/local/bin/launchKodi.sh"]
 
 
