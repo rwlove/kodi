@@ -28,7 +28,6 @@ docker run \
        -v /run/user/${USER_UID}/pulse:/run/user/${USER_UID}/pulse \
        -v /var/lib/dbus:/var/lib/dbus \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
-       -v /etc/localtime/:/etc/localtime/:ro \
        -v /dev/dri/:/dev/dri \
        -v ${BUILD_DIR}/Database/Guest:/home/${USER}/.kodi/userdata/profiles/Guest/Database \
        -v ${BUILD_DIR}/logs/kodi.log:/home/${USER}/.kodi/temp/kodi.log \

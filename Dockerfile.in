@@ -4,8 +4,6 @@ FROM ubuntu:17.04
 # Configure Environment Variables
 #####
 
-RUN apt-get clean && apt-get -y update && apt-get install -y locales && dpkg-reconfigure locales && locale-gen en_US.UTF-8
-
 # # Ensure UTF-8 lang and locale
 ENV LANG       en_US.UTF-8
 ENV LANGUAGE   en_US:en 
@@ -90,6 +88,16 @@ RUN chown {{USER}}:{{USER}} -R /home/{{USER}}
 #RUN chown {{USER}.{{USER}} /plugin.video.youtube-5.3.1.zip
 
 CMD ["/usr/local/bin/launchKodi.sh"]
+
+
+#####
+# Fix Timezone
+#####
+
+RUN apt-get -y install tzdata
+RUN echo "America/Los_Angeles" > /etc/timezone
+RUN dpkg-reconfigure -f noninteractive tzdata
+
 
 #####
 # Clean up
