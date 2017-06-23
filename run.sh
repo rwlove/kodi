@@ -31,6 +31,7 @@ docker run \
        -v /dev/dri/:/dev/dri \
        -v ${BUILD_DIR}/Database/Guest:/home/${USER}/.kodi/userdata/profiles/Guest/Database \
        -v ${BUILD_DIR}/logs/kodi.log:/home/${USER}/.kodi/temp/kodi.log \
+       -v ${BUILD_DIR}data/kodi/userdata/Thumbnails:/home/rwlove/.kodi/userdata/Thumbnails \
        -v ${BUILD_DIR}/data/kodi/userdata/Database/:/home/${USER}/.kodi/userdata/Database/ \
        -v ${BUILD_DIR}/Database/bubba:/home/${USER}/.kodi/userdata/profiles/${USER_NAME}/Database \
        -v ${BUILD_DIR}/xfer:/xfer \
