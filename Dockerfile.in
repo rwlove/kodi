@@ -31,11 +31,9 @@ RUN apt-get clean && apt-get -y update && apt-get install -y software-properties
 RUN add-apt-repository -y multiverse && \
 add-apt-repository -y ppa:team-xbmc/ppa && \
 add-apt-repository -y ppa:jlbarriere68/ppa && \
-apt-get -y update
-
-RUN apt-get purge kodi-pvr-mythtv*
-
-RUN apt-get -y install \
+apt-get -y update && \
+apt-get purge kodi-pvr-mythtv* && \
+apt-get -y install \
 pulseaudio \
 strace \
 kodi \

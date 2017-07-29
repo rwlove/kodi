@@ -18,14 +18,16 @@ ps axf | grep docker
 
 BUILD_DIR=${PWD}
 
+echo "USER_ID = ${USER_UID}"
+
 docker run \
        -dt \
        -e DISPLAY=${DISPLAY} \
        --privileged \
-       -v /dev/snd:/dev/snd \
+       -e PULSE_SERVER=tcp:192.168.1.4:4713 \
+       -e PULSE_COOKIE=/run/pulse/cookie \
        -v /dev/shm:/dev/shm \
        -v /etc/machine-id:/etc/machine-id \
-       -v /run/user/${USER_UID}/pulse:/run/user/${USER_UID}/pulse \
        -v /var/lib/dbus:/var/lib/dbus \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
        -v /dev/dri/:/dev/dri \
