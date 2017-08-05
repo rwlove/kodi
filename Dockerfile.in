@@ -2,7 +2,7 @@ FROM ubuntu:17.04
 
 #####
 # Configure Environment Variables
-#####
+###############################
 
 # # Ensure UTF-8 lang and locale
 ENV LANG       en_US.UTF-8
@@ -12,16 +12,17 @@ ENV TZ         America/Los_Angeles
 
 ENV DEBIAN_FRONTEND noninteractive
 
+
 #####
 # Configure APT Cacher Proxy
-#####
+###############################
 
 #RUN  echo 'Acquire::http { Proxy "http://apt-cache-proxy:3142"; };' >> /etc/apt/apt.conf.d/01proxy
 
 
 #####
 # Update and Install Packages
-#####
+###############################
 
 RUN apt-get clean && apt-get -y update && apt-get install -y software-properties-common
 
@@ -54,40 +55,48 @@ ethtool \
 iputils-tracepath \
 iputils-ping
 
+
 #####
 # Install and configure 'kodi'
-#####
-
-##may need to add screensaver stop/start files to /usr/local/bin
+###############################
 
 ADD kodi_config_files.tar.gz /
 
-# visualization.goom, visualization.projectm and visualization.spectrum are installed to the wrong location
-#RUN mv /usr/lib/x86_64-linux-gnu/addons/* /usr/lib/kodi/addons
-# TODO: fix: [ mv: target '/usr/lib/kodi/addons/' is not a directory ]
+
+#####
+# Nodejs workaround
+###############################
 
 RUN ln /usr/bin/nodejs /usr/bin/node
+
+
+#####
+# Expose Ports and set entrypoint
+###############################
 
 EXPOSE 8080
 EXPOSE 9090
 EXPOSE 1900
 EXPOSE 9777
 
-RUN groupadd -g {{USER_GID}} {{USER}} && \
-useradd {{USER}} -u {{USER_UID}} -g {{USER}} && \
-echo "{{USER}}:{{PASSWORD}}" | chpasswd
-
-#RUN useradd -G sound {{USER}}
-
-RUN mkdir -p /home/{{USER}}/.config/pulse /home/{{USER}}/.pulse /home/{{USER}}/.kodi/temp
-RUN chown {{USER}}:{{USER}} -R /home/{{USER}}
-
 CMD ["/usr/local/bin/launchKodi.sh"]
 
 
 #####
-# Fix Timezone
+# Configure 'kodi' user and group
+###############################
+
+RUN groupadd -g {{USER_GID}} {{USER}} && \
+useradd {{USER}} -u {{USER_UID}} -g {{USER}} && \
+echo "{{USER}}:{{PASSWORD}}" | chpasswd
+
+RUN mkdir -p /home/{{USER}}/.config/pulse /home/{{USER}}/.pulse /home/{{USER}}/.kodi/temp
+RUN chown {{USER}}:{{USER}} -R /home/{{USER}}
+
+
 #####
+# Fix Timezone
+###############################
 
 RUN apt-get -y install tzdata
 RUN echo "America/Los_Angeles" > /etc/timezone
@@ -96,7 +105,7 @@ RUN dpkg-reconfigure -f noninteractive tzdata
 
 #####
 # Clean up
-#####
+###############################
 
 RUN apt-get -y clean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
