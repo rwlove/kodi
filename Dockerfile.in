@@ -54,8 +54,8 @@ kodi-inputstream-adaptive \
 ethtool \
 iputils-tracepath \
 iputils-ping \
-tzdata
-
+tzdata \
+python-requests
 
 
 #####
