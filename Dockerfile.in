@@ -53,7 +53,9 @@ npm \
 kodi-inputstream-adaptive \
 ethtool \
 iputils-tracepath \
-iputils-ping
+iputils-ping \
+tzdata
+
 
 
 #####
@@ -95,12 +97,17 @@ RUN chown {{USER}}:{{USER}} -R /home/{{USER}}
 
 
 #####
-# Fix Timezone
+# Fix Timezone (https://serverfault.com/a/683606)
 ###############################
 
-RUN apt-get -y install tzdata
-RUN echo "America/Los_Angeles" > /etc/timezone
+# Relocate the timezone file
+RUN mkdir -p /config/etc && mv /etc/timezone /config/etc/ && ln -s /config/etc/timezone /etc/
+
+# Set timezone as specified in /config/etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
+
+# Set the time zone
+RUN echo "America/Los_Angeles" > /config/etc/timezone
 
 
 #####
