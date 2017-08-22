@@ -41,6 +41,6 @@ docker run \
        -p 9090:9090 \
        -p 1900:1900 \
        -p 9777:9777 \
-       -h kodi \
+       -h kodi\
        --restart=always \
-       services/kodi:latest
+       services/kodi:v17.4
