@@ -30,7 +30,6 @@ RUN add-apt-repository -y multiverse && \
 add-apt-repository -y ppa:team-xbmc/ppa && \
 add-apt-repository -y ppa:jlbarriere68/ppa && \
 apt-get -y update && \
-apt-get purge kodi-pvr-mythtv* && \
 apt-get -y install \
 pulseaudio \
 strace \
