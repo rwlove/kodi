@@ -34,7 +34,7 @@ apt-get -y update && \
 apt-get -y install \
 pulseaudio \
 strace \
-kodi=2:17.4+git20170822.1009-final-0zesty \
+kodi=2:17.5+git20171026.2109-final-0zesty \
 kodi-pvr-mythtv \
 kodi-visualization-projectm \
 kodi-visualization-shadertoy \

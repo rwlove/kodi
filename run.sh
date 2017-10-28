@@ -43,4 +43,4 @@ docker run \
        -p 9777:9777 \
        -h kodi\
        --restart=always \
-       services/kodi:v17.4
+       services/kodi:v17.5
