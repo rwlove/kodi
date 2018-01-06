@@ -63,13 +63,6 @@ ADD kodi_config_files.tar.gz /
 
 
 #####
-# Nodejs workaround
-###############################
-
-RUN ln /usr/bin/nodejs /usr/bin/node
-
-
-#####
 # Expose Ports and set entrypoint
 ###############################
 
