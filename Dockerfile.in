@@ -59,7 +59,7 @@ python-requests
 # Install and configure 'kodi'
 ###############################
 
-ADD kodi_config_files.tar.gz /
+ADD config_files_archive/kodi_config_files.tar /
 
 
 #####
