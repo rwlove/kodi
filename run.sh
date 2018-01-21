@@ -43,4 +43,4 @@ docker run \
        -p 9777:9777 \
        -h kodi\
        --restart=always \
-       services/kodi:v18.0-git20180114
+       services/kodi:v18.0-git20180121
