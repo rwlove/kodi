@@ -27,13 +27,13 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get clean && \
 apt-get -y update && \
 apt-get install -y software-properties-common && \
-add-apt-repository -y ppa:team-xbmc/ppa && \
+add-apt-repository -y ppa:team-xbmc/xbmc-nightly && \
 add-apt-repository -y ppa:jlbarriere68/ppa && \
 apt-get -y update && \
 apt-get -y install \
 pulseaudio \
 strace \
-kodi=2:17.6+git20171114.2125-final-0artful \
+kodi=2:18.0+git20180313.0201-701da00-0artful \
 kodi-pvr-mythtv \
 kodi-visualization-spectrum \
 dbus-x11 \

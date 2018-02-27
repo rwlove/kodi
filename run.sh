@@ -43,4 +43,4 @@ docker run \
        -p 9777:9777 \
        -h kodi\
        --restart=always \
-       services/kodi:v17.6-git20171114.2125-final-0artful
+       services/kodi:v18.0-git20180313.0201-701da00-0artful
