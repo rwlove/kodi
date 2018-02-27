@@ -27,7 +27,6 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get clean && \
 apt-get -y update && \
 apt-get install -y software-properties-common && \
-add-apt-repository -y multiverse && \
 add-apt-repository -y ppa:team-xbmc/ppa && \
 add-apt-repository -y ppa:jlbarriere68/ppa && \
 apt-get -y update && \
