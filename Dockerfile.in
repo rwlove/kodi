@@ -17,7 +17,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Configure APT Cacher Proxy
 ###############################
 
-#RUN  echo 'Acquire::http { Proxy "http://apt-cache-proxy:3142"; };' >> /etc/apt/apt.conf.d/01proxy
+RUN  echo 'Acquire::http { Proxy "http://192.168.3.18:3142"; };' >> /etc/apt/apt.conf.d/01proxy
 
 
 #####
