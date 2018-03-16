@@ -33,7 +33,7 @@ apt-get -y update && \
 apt-get -y install \
 pulseaudio \
 strace \
-kodi=2:18.0+git20180313.0201-701da00-0artful \
+kodi \
 kodi-pvr-mythtv \
 kodi-visualization-spectrum \
 dbus-x11 \
